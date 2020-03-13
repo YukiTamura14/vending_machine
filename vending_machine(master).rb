@@ -29,7 +29,7 @@ class VendingMachine
   def initialize
     @total = 0
     @sale_amount = 0
-    @coke = Drink.new("コーラ", 120, 5)
+    @coke = Drink.new("コーラ", 120, 0)
     @red_bull = Drink.new("レッドブル", 200, 5)
     @water = Drink.new("水", 100, 5)
     @drink_table = [@coke, @red_bull, @water]
@@ -44,8 +44,7 @@ class VendingMachine
   end
 
   def refund
-    refunded_money = @total
-    @total = 0
+    refunded_money, @total = @total, 0
     refunded_money
   end
 
@@ -69,29 +68,29 @@ class VendingMachine
 
   def purchase(drink_name)
     @drink_table.each do |drink|
-      if drink.name.include?(drink_name)
-        if drink.stock_count.zero?
-          return "売り切れだよ"
-        elsif drink.price > @total
-          return "お金足りないよ"
+      if drink.name == drink_name
+        if drink.stock_count.zero? || drink.price > @total
+          return false
         else
           change = @total - drink.price
           @total = 0
           drink.stock_count -= 1
           add_sale_amount(drink.price)
-          return "#{drink.name}, お釣り: #{change}円"
+          return {drink_name: drink.name, change: change}
         end
       end
     end
-    "そんなジュース売ってないよ"
+    false
   end
 
   def stock(drink_name:, stock_count:)
     @drink_table.each_with_index do |drink, index|
-      if drink.name.include?(drink_name) && Integer === stock_count
+      if drink.name == drink_name && Integer === stock_count
         @drink_table[index].stock_count += stock_count
+        return {drink_name: @drink_table[index].name, stock_count: @drink_table[index].stock_count}
       end
     end
+    false
   end
 
   private
@@ -101,7 +100,7 @@ class VendingMachine
   end
 
   def drink_info(drink)
-    "#{drink.name}, #{drink.price}円"
+    {drink_name: drink.name, price: drink.price}
   end
 end
 
