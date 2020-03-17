@@ -35,14 +35,14 @@ RSpec.describe VendingMachine do
     end
   end
 
-  describe '#purchasable?' do
+  describe '#purchasable_drinks' do
     it '投入したお金で購入できる飲み物を取得できる' do
       vm.store
-      expect(vm.purchasable?).to eq []
+      expect(vm.purchasable_drinks).to eq []
       vm.insert(10)
       vm.insert(10)
       vm.insert(100)
-      expect(vm.purchasable?).to eq ["cola", "water"]
+      expect(vm.purchasable_drinks).to eq ["cola", "water"]
     end
 
     it '購入できるかどうか在庫を確認できる' do
@@ -57,7 +57,7 @@ RSpec.describe VendingMachine do
       vm.insert(10)
       vm.insert(10)
       vm.insert(100)
-      expect(vm.purchasable?).to eq ["water"]
+      expect(vm.purchasable_drinks).to eq ["water"]
     end
   end
 
