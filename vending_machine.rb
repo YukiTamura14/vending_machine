@@ -22,7 +22,7 @@ class VendingMachine
     water = Drink.new('water', 100, 5)
     @drinks = [cola, red_bull, water]
   end
-  def purchasable? #購入できるかどうかの確認
+  def purchasable_drinks #購入できるかどうかの確認
     purchasable_drinks = []
     @drinks.each do |drink|
       if @total >= drink.price && drink.stock > 0
