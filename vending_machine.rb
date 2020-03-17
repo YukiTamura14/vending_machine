@@ -23,13 +23,16 @@ class VendingMachine
     @drinks = [cola, red_bull, water]
   end
   def purchasable_drinks #購入できるかどうかの確認
-    purchasable_drinks = []
-    @drinks.each do |drink|
-      if @total >= drink.price && drink.stock > 0
-        purchasable_drinks.push(drink.name)
-      end
+    # purchasable_drinks = []
+    # @drinks.each do |drink|
+    #   if @total >= drink.price && drink.stock > 0
+    #     purchasable_drinks.push(drink.name)
+    #   end
+    # end
+    # purchasable_drinks
+    @drinks.map do |drink|
+      drink.name if @total >= drink.price && drink.stock > 0
     end
-    purchasable_drinks
   end
   def purchase(drink_name) #購入する
     @drinks.each do |drink|

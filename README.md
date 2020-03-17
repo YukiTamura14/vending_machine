@@ -33,7 +33,7 @@
 `> vm.total`
 
 8.購入できる飲み物を表示
-`> vm.purchasable?`
+`> vm.purchasable_drinks`
 
 9.飲み物を購入
 <br>
