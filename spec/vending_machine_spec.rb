@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../vending_machine(20200313)'
+require_relative '../vending_machine'
 
 RSpec.describe VendingMachine do
   let(:vm) { VendingMachine.new }
