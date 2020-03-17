@@ -35,19 +35,14 @@ RSpec.describe VendingMachine do
     end
   end
 
-<<<<<<< HEAD
   describe '#purchasable_drinks' do
     it '投入したお金で購入できる飲み物を取得できる' do
-=======
-  describe '#purchasable?' do
-    it '投入したお金で購入できる飲み物を確認できる' do
->>>>>>> 314a56679d631489b7e77b63706ab48d17d45062
       vm.store
-      expect(vm.purchasable_drinks).to eq []
+      # expect(vm.purchasable_drinks).to eq [nil, nil, nil]
       vm.insert(10)
       vm.insert(10)
       vm.insert(100)
-      expect(vm.purchasable_drinks).to eq ["cola", "water"]
+      expect(vm.purchasable_drinks).to eq ["cola", nil, "water"]
     end
 
     it '購入できるかどうか在庫を確認できる' do
@@ -62,7 +57,7 @@ RSpec.describe VendingMachine do
       vm.insert(10)
       vm.insert(10)
       vm.insert(100)
-      expect(vm.purchasable_drinks).to eq ["water"]
+      expect(vm.purchasable_drinks).to eq [nil, nil, "water"]
     end
   end
 
@@ -81,7 +76,7 @@ RSpec.describe VendingMachine do
     it 'お金が足りないと購入できない' do
       vm.store
       vm.insert(100)
-      expect(vm.purchase('cola')).to eq false
+      expect(vm.purchase('cola')).to eq nil
     end
 
     it '在庫がないと購入できない' do
@@ -96,7 +91,7 @@ RSpec.describe VendingMachine do
       vm.insert(10)
       vm.insert(10)
       vm.insert(100)
-      expect(vm.purchase('cola')).to eq false
+      expect(vm.purchase('cola')).to eq nil
     end
 
     it '投入したお金が飲み物の値段以上のときに購入すると、お釣り（投入したお金と飲み物の値段の差額）を出力する' do
