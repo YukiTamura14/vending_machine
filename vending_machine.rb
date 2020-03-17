@@ -6,17 +6,17 @@ class VendingMachine
     @sale_amount = 0
     @drinks = {}
   end
-  def insert(money) #投入する
+  def insert(money) #お金を投入する
     if MONEY.include?(money)
       @total += money
     else
       money
     end
   end
-  def payback #払い戻す
+  def payback #お金を払い戻す
     @total.tap{@total = 0}
   end
-  def store #格納する
+  def store #飲み物を補充する
     cola = Drink.new('cola', 120, 5)
     red_bull = Drink.new('Red Bull', 200, 5)
     water = Drink.new('water', 100, 5)
