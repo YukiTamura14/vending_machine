@@ -4,7 +4,6 @@ class VendingMachine
   def initialize
     @total = 0
     @sale_amount = 0
-    # @drinks = []
     @drinks = {}
   end
   def insert(money) #投入する
@@ -21,13 +20,9 @@ class VendingMachine
     cola = Drink.new('cola', 120, 5)
     red_bull = Drink.new('Red Bull', 200, 5)
     water = Drink.new('water', 100, 5)
-    # @drinks = [cola, red_bull, water]
     @drinks = {cola: cola, red_bull: red_bull, water: water}
   end
   def purchasable_drinks #購入できるかどうかの確認
-    # @drinks.map do |drink|
-    #   drink.name if @total >= drink.price && drink.stock > 0
-    # end
     @drinks.map do |k, v|
       v.name if @total >= v.price && v.stock > 0
     end
