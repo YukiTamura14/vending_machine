@@ -11,7 +11,7 @@ RSpec.describe VendingMachine do
   end
 
   describe '#total' do
-    it '投入は複数回できる' do
+    it 'お金の投入は複数回できる' do
       expect(vm.insert(100)).to eq(100)
       expect(vm.insert(500)).to eq(600)
       expect(vm.insert(1000)).to eq(1600)
@@ -36,7 +36,7 @@ RSpec.describe VendingMachine do
   end
 
   describe '#purchasable?' do
-    it '投入したお金で購入できる飲み物を取得できる' do
+    it '投入したお金で購入できる飲み物を確認できる' do
       vm.store
       expect(vm.purchasable?).to eq []
       vm.insert(10)

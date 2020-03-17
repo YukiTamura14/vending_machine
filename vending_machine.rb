@@ -6,23 +6,23 @@ class VendingMachine
     @sale_amount = 0
     @drinks = []
   end
-  def insert(money) #投入する
+  def insert(money) #お金を投入する
     if MONEY.include?(money)
       @total += money
     else
       money
     end
   end
-  def payback #払い戻す
+  def payback #お金を払い戻す
     @total.tap{@total = 0}
   end
-  def store #格納する
+  def store #飲み物を補充する
     cola = Drink.new('cola', 120, 5)
     red_bull = Drink.new('Red Bull', 200, 5)
     water = Drink.new('water', 100, 5)
     @drinks = [cola, red_bull, water]
   end
-  def purchasable? #購入できるかどうかの確認
+  def purchasable? #購入できる飲み物の確認
     purchasable_drinks = []
     @drinks.each do |drink|
       if @total >= drink.price && drink.stock > 0
@@ -31,7 +31,7 @@ class VendingMachine
     end
     purchasable_drinks
   end
-  def purchase(drink_name) #購入する
+  def purchase(drink_name) #飲み物を購入する
     @drinks.each do |drink|
       if drink.name == drink_name
         if @total < drink.price || drink.stock == 0
