@@ -4,7 +4,8 @@ class VendingMachine
   def initialize
     @total = 0
     @sale_amount = 0
-    @drinks = []
+    # @drinks = []
+    @drinks = {}
   end
   def insert(money) #投入する
     if MONEY.include?(money)
@@ -20,32 +21,24 @@ class VendingMachine
     cola = Drink.new('cola', 120, 5)
     red_bull = Drink.new('Red Bull', 200, 5)
     water = Drink.new('water', 100, 5)
-    @drinks = [cola, red_bull, water]
+    # @drinks = [cola, red_bull, water]
+    @drinks = {cola: cola, red_bull: red_bull, water: water}
   end
   def purchasable_drinks #購入できるかどうかの確認
-    @drinks.map do |drink|
-      drink.name if @total >= drink.price && drink.stock > 0
+    # @drinks.map do |drink|
+    #   drink.name if @total >= drink.price && drink.stock > 0
+    # end
+    @drinks.map do |k, v|
+      v.name if @total >= v.price && v.stock > 0
     end
   end
   def purchase(drink_name) #購入する
-    # @drinks.each do |drink|
-    #   if drink.name == drink_name
-    #     if @total < drink.price || drink.stock == 0
-    #       return false
-    #     else
-    #       @total -= drink.price
-    #       drink.stock -= 1
-    #       @sale_amount += drink.price
-    #       return self.payback
-    #     end
-    #   end
-    # end
     if self.purchasable_drinks.include?(drink_name)
-      # 購入の処理（ハッシュで渡したい）
-      # @total -= drink.price
-      # drink.stock -= 1
-      # @sale_amount += drink.price
-      # return self.payback
+      drink = @drinks[drink_name.intern]
+      @total -= drink.price
+      drink.stock -= 1
+      @sale_amount += drink.price
+      return self.payback
     end
   end
 end
