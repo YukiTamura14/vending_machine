@@ -6,11 +6,11 @@
 
 2.プログラムを読み込む
 <br>
-`> require './vending_machine(20200313).rb'`
+`> require './vending_machine.rb'`
 <br>
 または
 <br>
-`> load './vending_machine(20200313).rb'`
+`> load './vending_machine.rb'`
 
 3.自動販売機を初期化
 `> vm = VendingMachine.new`
