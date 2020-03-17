@@ -41,7 +41,12 @@
 <br>
 `> #コーラ(cola)、レッドブル(Red Bull)、水(water)が購入いただけます`
 <br>
-`> #おつりが返却されます`
+`> #お釣りが返却されます`
 
 10.売上の合計を表示
 `> vm.sale_amount`
+
+## テストを実行
+`> #vmディレクトリ直下で実行`
+<br>
+`> rspec spec/vending_machine_spec.rb`

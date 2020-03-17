@@ -1,14 +1,3 @@
-# require '/Users/tatsuyamatsuhashi/workspace/vending_machine/maa_vm.rb' または
-# load '/Users/tatsuyamatsuhashi/workspace/vending_machine/maa_vm.rb'
-# vm = VendingMachine.new
-# vm.store 格納する
-# vm.drinks 格納されているドリンクの情報を表示する
-# vm.insert(500) 投入する
-# vm.payback 払い戻す
-# vm.total 投入金額の総計を表示
-# vm.purchasable? 購入できる商品を表示
-# vm.purchase('cola') 購入する
-# vm.sale_amount 現在の売上金額の表示
 class VendingMachine
   MONEY = [10, 50, 100, 500, 1000].freeze
   attr_reader :total, :sale_amount, :drinks
@@ -20,6 +9,8 @@ class VendingMachine
   def insert(money) #投入する
     if MONEY.include?(money)
       @total += money
+    else
+      money
     end
   end
   def payback #払い戻す
