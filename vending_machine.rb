@@ -18,9 +18,9 @@ class VendingMachine
   end
   def store #飲み物を補充
     cola = Drink.new('cola', 120, 5)
-    red_bull = Drink.new('Red Bull', 200, 5)
+    red_bull = Drink.new('RedBull', 200, 5)
     water = Drink.new('water', 100, 5)
-    @drinks = {cola: cola, red_bull: red_bull, water: water}
+    @drinks = {cola: cola, RedBull: red_bull, water: water}
   end
   def purchasable_drinks #購入できる飲み物を表示
     @drinks.map do |k, v|

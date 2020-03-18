@@ -39,7 +39,7 @@
 <br>
 `> vm.purchase('cola')`
 <br>
-`> #コーラ(cola)、レッドブル(Red Bull)、水(water)が購入いただけます`
+`> #コーラ(cola)、レッドブル(RedBull)、水(water)が購入いただけます`
 <br>
 `> #お釣りが返却されます`
 
