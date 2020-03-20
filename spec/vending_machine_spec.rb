@@ -38,7 +38,7 @@ RSpec.describe VendingMachine do
   describe '#purchasable_drinks' do
     it '投入したお金で購入できる飲み物を取得できる' do
       vm.store
-      # expect(vm.purchasable_drinks).to eq [nil, nil, nil]
+      expect(vm.purchasable_drinks).to eq [nil, nil, nil]
       vm.insert(10)
       vm.insert(10)
       vm.insert(100)
